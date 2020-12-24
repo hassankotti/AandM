@@ -1,7 +1,7 @@
 <div class="page-wrapper toggled">
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
-      <a href="#" id="toggle-sidebar"><i class="fa fa-bars"></i></a>
+      <!--a href="#" id="toggle-sidebar"><i class="fa fa-bars"></i></a-->
       <div class="sidebar-brand">
         <a  href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}

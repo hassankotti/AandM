@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
-
+use Intervention\Image\Facades\Image as Image;
 use  App\Model\Category;
 
 class CategoryController extends Controller
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         return view('admin.category.index',compact('categories'));
     }
 
@@ -43,17 +43,31 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $request->validate([
-            'img_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        
-        $imageName = time().'.'.$request->img_path->extension();  
-   
-        $request->img_path->move(public_path('images'), $imageName);
-        $category = $request->all();
-        Category::create($category);
-        return redirect()->route('category');
+        $path = "";
+        if($request->hasFile('img_path')){
+            $request->validate([
+                'img_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'name' => 'required',
+                'desc'=>'max:240'
+            ]);
+            
+            $imageName = time().'.'.$request->img_path->extension();  
+       
+            $path = $request->img_path->move(public_path('images\categories'), $imageName);
+        }
+        $category = new Category();
+       
+        $data = $request->all();
+        //dd($category);
+        Category::create( 
+            [
+                'img_path' => $path,
+                'name' => $data['name'],
+                'desc' => $data['desc']
+            ]
+        );
+        return redirect()->route('category')
+            ->with('success','Category added successfully.');
     }
 
     /**

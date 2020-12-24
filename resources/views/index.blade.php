@@ -1,4 +1,4 @@
-@extends('layouts.blank')
+@extends('layouts.master')
 @section('content')
 <div class="container">
     <div class="row ">
@@ -49,7 +49,7 @@
           @foreach ($products as $product)
               <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top img-thumbnail" src="{{ asset($product->img_path) }}" alt="{{ asset($product->img_path) }}"></a>
+              <a href="#"><img class="card-img-top img-thumbnail" src="{{ url($product->img_path) }}" alt="{{ asset($product->img_path) }}"></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="#">{{ $product->name }}</a>

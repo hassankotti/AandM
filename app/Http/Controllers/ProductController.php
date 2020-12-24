@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Model\Category;
 use App\Model\Product;
+use Dotenv\Result\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Intervention\Image\Facades\Image as Image;
 class ProductController extends Controller
 {
 
@@ -44,24 +45,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-        $path = "";
-        
-        if ($request->hasFile('img_path')) {
-            $path = Storage::disk('local')->put($request->file('img_path')->getClientOriginalName(),$request->file('img_path')->get());
-            $path = $request->file('img_path')->store('/images/products'); 
-                       
-        }
-        //dd($path);
-        $product->img_path = $path;
-        $product->name = $request->name;
-        $product->category_id = $request->category_id;
-        $product->price = $request->price;
-        $product->details = $request->details;
-        $product->save();
+        $status = Product::createProduct($request);
 
         return redirect()->route('product')
-        ->with('success','Product added successfully...');
+        ->with('success', $status ? 'Product added successfully...' : 'Error');
     }
 
     /**
@@ -99,12 +86,32 @@ class ProductController extends Controller
      */
     public function update(Request $request,$id)
     {
+        $product = new Product();
+        $path = "";
+        
+        if ($request->hasFile('img_path')) {
+            $image       = $request->file('img_path');
+            
+            $filename    = $image->getClientOriginalName();
+    
+            //Fullsize
+            $image->move(public_path().'/images/products/',$filename);
+    
+            $image_resize = Image::make(public_path().'/images/products/'.$filename);
+            $image_resize->fit(300, 300);
+            $image_resize->save(public_path('/images/products/' .$filename));
+            //dd($image);
+            $path =public_path().'/images/products/'.$filename;
+                       
+        }
+        
+ 
         $product= Product::find($id);
         $product->name         = $request->name;
         $product->details      = $request->details;
         $product->price        = $request->price;
         $product->category_id  = $request->category_id;
-        $product->img_path     = $request->img_path;
+        $product->img_path     = $path;
         
         $product->update();
         return redirect()->route('product')
