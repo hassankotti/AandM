@@ -21,7 +21,11 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.shared.sidebar')
+    @include('layouts.shared.nav')
+         <main class="mt-10">
+            @yield('content')
+        </main>
+        @include('layouts.shared.footer')
     </div>
 </body>
 </html>

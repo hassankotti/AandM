@@ -52,6 +52,7 @@ class ProductController extends Controller
             $path = $request->file('img_path')->store('/images/products'); 
                        
         }
+        //dd($path);
         $product->img_path = $path;
         $product->name = $request->name;
         $product->category_id = $request->category_id;

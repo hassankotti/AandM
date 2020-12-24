@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-
-Route::resource('/category', 'CategoryController')->name('index','category');
-
-Route::resource('/product','ProductController')->name('index','product');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/',  'DashboardController@index')->name('dashboard');
+    Route::resource('/category', 'CategoryController')->name('index','category');
+    Route::resource('/product','ProductController')->name('index','product');
+});

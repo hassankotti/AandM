@@ -21,7 +21,13 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.shared.sidebar')
+        <main class="page-content">           
+            <div class="container-fluid">      
+            <main class="py-4">
+                @yield('content')
+            </main>      
+            </div>
+        </main>
     </div>
 </body>
 </html>

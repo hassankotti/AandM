@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Category;
-use App\Model\Product;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,8 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categoreis = Category::all();
-        $products = Product::all();
-        return view('index',compact('categoreis','products'));
+        return view('admin.dashboard');
     }
 }
