@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.blank')
 @section('content')
 <div class="container">
     <div class="row ">
@@ -63,7 +63,7 @@
             </div>
           </div>
           @endforeach
-      
+
         </div>
         <!-- /.row -->
 
@@ -76,7 +76,7 @@
   </div>
   <!-- /.container -->
 
-  
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

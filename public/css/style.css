@@ -1,8 +1,44 @@
-/*!
- * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template/shop-homepage)
- * Copyright 2013-2020 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
- */
-body {
-  padding-top: 56px;
+.panel {
+    position: relative;
+    margin: 10px 0px;
+    padding: 15px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    border-radius: 6px;
+    min-height: 150px;
+}
+
+.panel-body {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+
+.panel-img-container {
+    position: relative;
+    margin: -15px 20px -15px -15px;
+}
+
+.panel-img {
+    min-width: 110px;
+}
+
+.panel-title {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 15px;
+    color: rgb(126, 133, 155);
+}
+
+.panel-desc {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 5px;
 }

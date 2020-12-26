@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image as Image;
+use App\Helpers\ImageHelper;
 use  App\Model\Category;
 
 class CategoryController extends Controller
@@ -43,29 +42,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $path = "";
-        if($request->hasFile('img_path')){
-            $request->validate([
-                'img_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'name' => 'required',
-                'desc'=>'max:240'
-            ]);
-            
-            $imageName = time().'.'.$request->img_path->extension();  
-       
-            $path = $request->img_path->move(public_path('images\categories'), $imageName);
-        }
-        $category = new Category();
-       
-        $data = $request->all();
-        //dd($category);
-        Category::create( 
-            [
-                'img_path' => $path,
-                'name' => $data['name'],
-                'desc' => $data['desc']
-            ]
-        );
+       $category = new Category();
+       $path = "";
+
+        $path = ImageHelper::ImageUpload($request,'img_path','/images/categories/');
+
+        $category->img_path = $path;
+        $category->name = $request->name;
+        $category->desc = $request->desc;
+        $category->save();
+
         return redirect()->route('category')
             ->with('success','Category added successfully.');
     }
@@ -89,7 +75,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category= Category::find($id);
+        //dd($category);
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -101,7 +89,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = new Category();
+        $path = "";
+
+        $path = ImageHelper::ImageUpload($request,'img_path','/images/categories/');
+
+        $category= Category::find($id);
+        $category->name         = $request->name;
+        $category->desc      = $request->desc;
+        $category->img_path     = $path;
+
+        $category->update();
+        return redirect()->route('category')
+        ->with('success','category Updated successfully...');
     }
 
     /**
@@ -112,6 +112,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->route('Category')
+        ->with('success','Category Deleted Successfully');
     }
 }

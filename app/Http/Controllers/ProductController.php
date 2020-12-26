@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Model\Category;
 use App\Model\Product;
-use Dotenv\Result\Success;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image as Image;
+use App\Helpers\ImageHelper;
+use Illuminate\Support\Facades\Auth;
+use App\Model\User;
 class ProductController extends Controller
 {
 
@@ -22,8 +22,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(5);
-        return view('admin.product.index',compact('products'));
+        $user = User::find(Auth::user()->id);
+        if($user->isAdmin()){
+            $products = Product::paginate(5);
+            return view('admin.product.index',compact('products'));
+        }
+
+        return redirect()->route('home');
     }
 
     /**
@@ -45,10 +50,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $status = Product::createProduct($request);
+       $product = new Product();
+       $path = "";
+
+        $path = ImageHelper::ImageUpload($request,'img_path','/images/products/');
+
+        $product->img_path = $path;
+        $product->name = $request->name;
+        $product->category_id = $request->category_id;
+        $product->price = $request->price;
+        $product->details = $request->details;
+        $product->save();
 
         return redirect()->route('product')
-        ->with('success', $status ? 'Product added successfully...' : 'Error');
+        ->with('success','Product added successfully');
     }
 
     /**
@@ -60,7 +75,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-    
+
         return view('admin.product.show',compact('product'));
     }
 
@@ -88,31 +103,16 @@ class ProductController extends Controller
     {
         $product = new Product();
         $path = "";
-        
-        if ($request->hasFile('img_path')) {
-            $image       = $request->file('img_path');
-            
-            $filename    = $image->getClientOriginalName();
-    
-            //Fullsize
-            $image->move(public_path().'/images/products/',$filename);
-    
-            $image_resize = Image::make(public_path().'/images/products/'.$filename);
-            $image_resize->fit(300, 300);
-            $image_resize->save(public_path('/images/products/' .$filename));
-            //dd($image);
-            $path =public_path().'/images/products/'.$filename;
-                       
-        }
-        
- 
+
+        $path = ImageHelper::ImageUpload($request,'img_path','/images/products/');
+
         $product= Product::find($id);
         $product->name         = $request->name;
         $product->details      = $request->details;
         $product->price        = $request->price;
         $product->category_id  = $request->category_id;
         $product->img_path     = $path;
-        
+
         $product->update();
         return redirect()->route('product')
         ->with('success','Product Updated successfully...');

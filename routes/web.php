@@ -18,8 +18,9 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/cart', 'CartController@index')->name('cart');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::middleware(['auth'=>'check_admin'])->prefix('admin')->group( function () {
     Route::get('/',  'DashboardController@index')->name('dashboard');
     Route::resource('/category', 'CategoryController')->name('index','category');
     Route::resource('/product','ProductController')->name('index','product');

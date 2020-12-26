@@ -36,9 +36,11 @@
                                 <input type="text" class="form-control" name="price"  placeholder="Enter Price" value="{{ $product->price }}">
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="img_path">Image</label>
-                                <img src="{{ $product->price }}" class="thumnail">
-                                <input type="file" class="form-control" name="img_path" value="{{ $product->img_path }}" >
+                                <img src="{{ url($product->img_path) }}" class="rounded col-sm-1" alt="{{ $product->img_path }}">
+                            </div>
+                            <div class="custom-file">
+                                <label class="custom-file-label" for="img_path">Image</label>
+                                <input type="file" class="custom-file-input" name="img_path" value="{{ $product->img_path }}" >
                             </div>
                             <div class="form-group">
                                 <label for="desc">Details</label>
