@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function(){
+    redirect()->route('home');
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cart', 'CartController@index')->name('cart');
 
 Route::middleware(['auth'=>'check_admin'])->prefix('admin')->group( function () {

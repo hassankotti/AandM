@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Model\User;
+use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     /**
@@ -11,9 +12,9 @@ class DashboardController extends Controller
      *
      * @return void
      */
-    public function __construct()
+     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('check_admin');
     }
 
     /**

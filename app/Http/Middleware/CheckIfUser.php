@@ -21,7 +21,7 @@ class CheckIfUser extends Middleware
             return $next($request);
         }
 
-        return redirect('/');
+        return redirect('/home');
 
     }
 }

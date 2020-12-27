@@ -42,3 +42,7 @@
     line-height: 16px;
     margin-top: 5px;
 }
+
+.navbar-bg-yellow {
+    background-color: rgb(254, 238, 0);
+}

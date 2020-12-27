@@ -1,7 +1,9 @@
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3 shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="{{route('home')}}">{{ config('app.name', 'Laravel') }}</a>
+      <a class="navbar-brand" href="{{route('home')}}">
+        <img src="{{ asset('/assets/images/logo.png') }}" class="img-sm col-sm w-50">
+        {{ config('app.name', 'Laravel') }}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
