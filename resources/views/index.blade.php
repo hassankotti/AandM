@@ -54,11 +54,11 @@
                 <h4 class="card-title">
                   <a href="#">{{ $product->name }}</a>
                 </h4>
-                <h5>{{ '$'.$product->price }}</h5>
+                <h5>{{ 'SDG '.$product->price }}</h5>
                 <p class="card-text">{{ $product->details }}</p>
               </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              <div class="card-footer btn-success">
+                <button class="btn text-black">Add To Cart</small>
               </div>
             </div>
           </div>

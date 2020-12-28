@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Category;
 use App\Model\Product;
+use App\Model\Cart;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +29,7 @@ class HomeController extends Controller
     {
         $categoreis = Category::all();
         $products = Product::all();
+        
         return view('index',compact('categoreis','products'));
     }
 }

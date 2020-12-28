@@ -23,6 +23,8 @@ Route::get('/', function(){
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cart', 'CartController@index')->name('cart');
+Route::get('/profile', 'CartController@index')->name('profile');
+
 
 Route::middleware(['auth'=>'check_admin'])->prefix('admin')->group( function () {
     Route::get('/',  'DashboardController@index')->name('dashboard');

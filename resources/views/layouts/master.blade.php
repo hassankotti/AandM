@@ -32,7 +32,9 @@
             <div class="container">
             <a class="navbar-brand" href="{{route('home')}}">
                 <img src="{{ asset('/assets/images/logo.png') }}" class="brand-logo">
-                <!-- config('app.name', 'Laravel') --></a>
+                <!--{{ config('app.name', 'Laravel') }}-->
+                <b class="text-gray">Store</b>
+                </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,6 +56,14 @@
                             </li>
                         @endif
                     @else
+                        <li class="nav-item">
+                            <a href="{{ route('cart') }}" title="Cart" class="nav-link text-dark ">
+                                <span class="h5">{{ __('Cart') }}</span>                                
+                                <span class="fa fa-shopping-cart ">
+                                <span class="badge badge-notify"> {{ $myCartCount }}</span>
+                                 </span>
+                            </a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <span class="ml-2 fa fa-user mr-2"></span>{{ Auth::user()->name }}
@@ -69,12 +79,13 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+
+                                <a class="dropdown-item" href="{{ route('profile') }}">
+                                    {{ __('Profile') }}
+                                </a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('cart') }}" title="Cart" class="nav-link text-dark">Cart<span class="ml-2 fa fa-shopping-cart"></span></a>
-
-                        </li>
+                        
                     @endguest
                 </ul>
             </div>
