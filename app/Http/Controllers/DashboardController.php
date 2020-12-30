@@ -24,6 +24,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $data = [4215, 5312, 6251, 7841, 9821, 14984];
+        return view('admin.dashboard',compact('data'));
     }
 }

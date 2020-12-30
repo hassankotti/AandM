@@ -22,6 +22,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bundle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dx.theme.css') }}" rel="stylesheet">
 
 
 </head>
@@ -58,7 +59,7 @@
                     @else
                         <li class="nav-item">
                             <a href="{{ route('cart') }}" title="Cart" class="nav-link text-dark ">
-                                <span class="h5">{{ __('Cart') }}</span>                                
+                                <span class="h5">{{ __('Cart') }}</span>
                                 <span class="fa fa-shopping-cart ">
                                 <span class="badge badge-notify"> {{ $myCartCount }}</span>
                                  </span>
@@ -85,7 +86,7 @@
                                 </a>
                             </div>
                         </li>
-                        
+
                     @endguest
                 </ul>
             </div>

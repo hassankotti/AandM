@@ -13181,7 +13181,7 @@ a.text-dark:focus {
     float: left;
     width: 60px;
     padding: 2px;
-    border: 1px solid #585858;
+    border-radius: 50%;
     border-radius: 8px;
     margin-right: 15px;
 }

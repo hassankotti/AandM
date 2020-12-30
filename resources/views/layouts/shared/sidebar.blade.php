@@ -9,7 +9,7 @@
       </div>
       <div class="sidebar-header">
         <div class="user-pic">
-          <img class="img-responsive img-rounded" src="https://azouaoui-med.github.io/pro-sidebar-template/bootstrap3/assets/img/user.jpg" alt="">
+          <img style="width: 50px; border-radius:50%;" src="{{ asset('assets/images/admin-avatar.jpg')  }}" alt="">
         </div>
         <div class="user-info">
           <span class="user-name"> <strong> {{ Auth::user()->name }} </strong></span>
@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="sidebar-menu">
         <ul>
           <li class="header-menu"><span>General</span></li>
@@ -95,11 +95,11 @@
   <!-- sidebar-wrapper  -->
   <main class="page-content">
   @include('layouts.shared.navbar')
-    <div class="container-fluid">      
+    <div class="container-fluid">
        <main class="py-4">
-                
+
                 @yield('content')
-            </main>      
+            </main>
     </div>
   </main>
   <!-- page-content" -->
@@ -127,7 +127,7 @@
         .addClass("active");
     }
   });
-  
+
   $("#toggle-sidebar").click(function() {
     $(".page-wrapper").toggleClass("toggled");
   });
