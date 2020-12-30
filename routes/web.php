@@ -22,7 +22,7 @@ Route::get('/', function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/cart', 'CartController@index')->name('cart');
+Route::resource('/cart', 'CartDetailsController')->name('index','cart');
 Route::get('/profile', 'CartController@index')->name('profile');
 
 

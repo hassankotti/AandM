@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="">
-        @if(Count($Cart)==0)
+        @if(Count($cart)==0)
         <div class="text-center py-4">
             <img width="300" class="repoonsive" src="{{ asset('assets/images/cart.svg') }}" alt="emptycart">
             <div class="text-center">
@@ -21,7 +21,7 @@
 	 				<div class="row">
 	 					<div class="col-md-12 col-lg-8">
 	 						<div class="items">
-                              @foreach($Cart as $item)
+                              @foreach($cart as $item)
 				 				<div class="product"> 
 				 					<div class="row">
 					 					<div class="col-md-3">

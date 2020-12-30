@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image as Image;
 use App\Helpers\ImageHelper;
 use  App\Model\Category;
 

@@ -58,7 +58,16 @@
                 <p class="card-text">{{ $product->details }}</p>
               </div>
               <div class="card-footer btn-success">
-                <button class="btn text-black">Add To Cart</small>
+                <a class="btn text-black" href="{{ route('cart') }}"
+                          onclick="event.preventDefault();
+                                          document.getElementById('add-to-cart').submit();">
+                          {{ __('Add To Cart') }}
+                      </a>
+
+                    <form id="add-to-cart" action="{{ route('cart.store') }}" method="POST" class="d-none">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    </form>
               </div>
             </div>
           </div>

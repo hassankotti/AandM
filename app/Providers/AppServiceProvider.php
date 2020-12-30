@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Model\Cart;
+use App\Model\CartDetails;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             'layouts.master',
             function ($view) {
-                $view->with('myCartCount', Count(Cart::all()));
+                $view->with('myCartCount', Count(CartDetails::getall()));
             }
         );
     }
