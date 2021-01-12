@@ -16,10 +16,13 @@ class CheckIfAdmin extends Middleware
      */
     public function handle($request, Closure $next)
     {
-        //dd($request->user());
-        if ($request->user()->isAdmin()) {
-            return $next($request);
+        if($request->user())
+        {
+            if ($request->user()->isAdmin()) {
+                return $next($request);
+            } 
         }
+        
         return redirect('/home');
     }
 }

@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\CartDetails;
+use App\Model\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use App\Model\Product;
 
-class CartDetailsController extends Controller
+class CartController extends Controller
 {
     public function __construct()
     {
@@ -17,18 +15,18 @@ class CartDetailsController extends Controller
 
     function index()
     {
-        $Cart = CartDetails::all();
-        return view('cart.index',compact('Cart'));
+        $cart = Cart::all();
+        //dd($cart);
+        return view('cart.index', compact('cart'));
     }
 
     function store(Request $request)
     {
-        $cartDetails = new CartDetails();
+        $cartDetails = new Cart();
         $cartDetails->user_id =  Auth::user()->id;
         $cartDetails->product_id = $request->product_id;
-        //dd($cartDetails);
         $cartDetails->save();
-        $cart = CartDetails::all();
-        return view('cart.index',compact('cart'));
+        $cart = Cart::all();
+        return view('cart.index', compact('cart'));
     }
 }

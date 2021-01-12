@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Category;
+use App\Model\Product;
 use Illuminate\Http\Request;
 use App\Model\User;
 use Illuminate\Support\Facades\Auth;
+
 class DashboardController extends Controller
 {
     /**
@@ -12,7 +15,7 @@ class DashboardController extends Controller
      *
      * @return void
      */
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('check_admin');
     }
@@ -25,6 +28,9 @@ class DashboardController extends Controller
     public function index()
     {
         $data = [4215, 5312, 6251, 7841, 9821, 14984];
-        return view('admin.dashboard',compact('data'));
+        $products = Product::all();
+        $categories = Category::all();
+        $users = User::all();
+        return view('admin.dashboard', compact('data', 'products', 'categories', 'users'));
     }
 }

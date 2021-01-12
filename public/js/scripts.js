@@ -8,7 +8,7 @@
 
     // Add active state to sidbar nav links
     var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
-        $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
+        $(".sidebar-dropdown").each(function() {
             if (this.href === path) {
                 $(this).addClass("active");
             }
@@ -20,3 +20,30 @@
         $("body").toggleClass("sb-sidenav-toggled");
     });
 })(jQuery);
+
+
+$(".sidebar-dropdown > a").click(function () {
+    $(".sidebar-submenu").slideUp(250);
+    if (
+        $(this)
+            .parent()
+            .hasClass("active")
+    ) {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this)
+            .parent()
+            .removeClass("active");
+    } else {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this)
+            .next(".sidebar-submenu")
+            .slideDown(250);
+        $(this)
+            .parent()
+            .addClass("active");
+    }
+});
+
+$("#toggle-sidebar").click(function () {
+    $(".page-wrapper").toggleClass("toggled");
+});

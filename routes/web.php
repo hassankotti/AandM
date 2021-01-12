@@ -17,17 +17,17 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', function(){
+Route::get('/', function () {
     redirect()->route('home');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/cart', 'CartDetailsController')->name('index','cart');
+Route::resource('/cart', 'CartController')->name('index', 'cart');
 Route::get('/profile', 'CartController@index')->name('profile');
 
 
-Route::middleware(['auth'=>'check_admin'])->prefix('admin')->group( function () {
+Route::middleware(['auth' => 'check_admin'])->prefix('admin')->group(function () {
     Route::get('/',  'DashboardController@index')->name('dashboard');
-    Route::resource('/category', 'CategoryController')->name('index','category');
-    Route::resource('/product','ProductController')->name('index','product');
+    Route::resource('/category', 'CategoryController')->name('index', 'category');
+    Route::resource('/product', 'ProductController')->name('index', 'product');
 });

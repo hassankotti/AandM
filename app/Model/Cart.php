@@ -4,9 +4,9 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CartDetails extends Model
+class Cart extends Model
 {
-    protected $fillable = ['product_id','user_id'];
+    protected $fillable = ['product_id', 'user_id','quantity'];
 
     function user()
     {
@@ -18,10 +18,8 @@ class CartDetails extends Model
         $this->hasMany(App\Models\product::Class);
     }
 
-    static function getall()
+    function getProductDetails()
     {
-        $cart = CartDetails::all();
-        
-        return $cart;
+        return Product::find($this->product_id);
     }
 }
