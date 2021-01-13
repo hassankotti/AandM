@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-
+        // $this->middleware('guest')->except('logout');
     }
 
     /**
@@ -29,7 +29,6 @@ class HomeController extends Controller
     {
         $categoreis = Category::all();
         $products = Product::all();
-        
-        return view('index',compact('categoreis','products'));
+        return view('index', compact('categoreis', 'products'));
     }
 }

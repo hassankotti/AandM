@@ -25,6 +25,7 @@ class CartController extends Controller
         $cartDetails = new Cart();
         $cartDetails->user_id =  Auth::user()->id;
         $cartDetails->product_id = $request->product_id;
+        dd($request->product_id);
         $cartDetails->save();
         $cart = Cart::all();
         return view('cart.index', compact('cart'));
