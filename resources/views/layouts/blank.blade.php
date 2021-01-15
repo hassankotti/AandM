@@ -21,7 +21,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bundle.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/dx.theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+
 
 </head>
 <body>
