@@ -1,5 +1,5 @@
 <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3 shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 shadow-sm">
     <div class="container">
       <a class="navbar-brand" href="{{route('home')}}">
         <img src="{{ asset('/assets/images/logo.png') }}" class="img-sm col-sm w-50">

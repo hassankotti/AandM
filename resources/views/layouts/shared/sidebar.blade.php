@@ -9,9 +9,8 @@
             <div class="sidebar-menu">
                 <ul>
                     <li class="header-menu"><span>E-commarce</span></li>
-                    <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i><span>Orders<span></a></li>
+                    <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                    <li><a href="{{ route('order') }}"><i class="fa fa-shopping-cart"></i><span>Orders<span></a></li>
                     <li><a href="{{ route('category') }}"><i class="fa fa-list"></i><span>Categories</span></a></li>
                     <li><a href="{{ route('product') }}"><i class="fa fa-product-hunt"></i><span>Product</span></a></li>
                     <li class="header-menu"><span>Reports</span></li>
@@ -32,7 +31,6 @@
         @include('layouts.shared.navbar')
         <div class="container-fluid">
             <main class="py-4">
-
                 @yield('content')
             </main>
         </div>

@@ -8,20 +8,20 @@
             <div class="card-header">
                 <div class="pull-left">
                     <h3>
-                        <i class="fa fa-user"></i><span class="ml-2">order</span>
+                        <i class="fa fa-user"></i><span class="ml-2">Product</span>
                     </h3>
                 </div>
                 <div class="pull-right">
-                            <a href="{{ route('order') }}" class="btn btn-primary">Back</a>
+                            <a href="{{ route('product') }}" class="btn btn-primary">Back</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action=" {{ route('order.store') }}" method="POST" enctype="multipart/form-data">
+                <form action=" {{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name"  placeholder="Enter order Name">
+                            <input type="text" class="form-control" name="name"  placeholder="Enter Product Name">
                         </div>
                         <div class="form-group ">
                                 <label for="name">Category</label>
@@ -44,7 +44,7 @@
 
                     <div class="form-group">
                         <label for="desc">Details</label>
-                        <textarea type="text" class="form-control" name="details" placeholder="Enter order Details"></textarea>
+                        <textarea type="text" class="form-control" name="details" placeholder="Enter Product Details"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
