@@ -7,7 +7,7 @@ use Closure;
 
 class CheckIfAdmin extends Middleware
 {
-  /**
+    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -16,13 +16,12 @@ class CheckIfAdmin extends Middleware
      */
     public function handle($request, Closure $next)
     {
-        if($request->user())
-        {
+        if ($request->user()) {
             if ($request->user()->isAdmin()) {
                 return $next($request);
-            } 
+            }
         }
-        
-        return redirect('/home');
+
+        return redirect('/');
     }
 }

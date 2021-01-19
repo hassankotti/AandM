@@ -28,5 +28,6 @@ Route::middleware(['auth' => 'check_admin'])->prefix('admin')->group(function ()
     Route::resource('/category', 'CategoryController')->name('index', 'category');
     Route::resource('/product', 'ProductController')->name('index', 'product');
     Route::resource('/orders', 'OrderController')->name('index', 'order');
-
+    Route::resource('/users', 'UserController')->name('index', 'users');
+    Route::resource('/roles', 'RoleController')->name('index', 'roles');
 });

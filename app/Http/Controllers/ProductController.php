@@ -11,7 +11,7 @@ use App\Model\User;
 class ProductController extends Controller
 {
 
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('check_admin');
     }
