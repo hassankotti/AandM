@@ -51,7 +51,7 @@
                                 <th> {{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td><small>{{ $user->email }}</small></td>
-                                <td>{{ $user->user_role }}</td>
+                                <td><span class="badge badge-success"> {{ $user->user_role? 'Admin':'User' }}</span></td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
                                     <form action="{{ route('users.destroy', $user->id) }}" method="POST">
