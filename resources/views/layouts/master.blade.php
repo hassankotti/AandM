@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel').'- Home' }}</title>
+    <title>{{ config('app.name', 'Laravel') . '- Home' }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -26,12 +26,10 @@
 <body>
     <div id="app">
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light  navbar-bg-light shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('/assets/images/logo.png') }}" class="brand-logo">
-                    <!--{{ config('app.name', 'Laravel') }}-->
-                    <!--b class="text-gray">Store</b-->
+                    <a class="navbar-brand" href="#">A&M Store</a>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,41 +37,67 @@
                 </button>
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categoreis
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @forelse($categoreis as $category)
+                                <a class="dropdown-item" href="#">{{ $category->name }}</a>
+                            @empty
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">No Categories</a>
+                            </div>
+                        @endforelse
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Profile</a>
+                    </li>
 
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><span class="fa fa-search"></span></button>
+                    </form>
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item text-back">
-                            <a class="nav-link" href="{{ route('login') }}"><b
-                                    class="btn btn-sm btn-secondery">{{ __('Login') }}</b></a>
+                        <li class="nav-item text-white">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}"><b
-                                        class="btn btn-sm btn-secondery">{{ __('Register') }}</b></a>
+                            <li class="nav-item text-white">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
                         <li class="nav-item">
-                            <a href="{{ route('cart') }}" title="Cart" class="nav-link text-dark ">
-                                <span class="h5">{{ __('Cart') }}</span>
+                            <a href="{{ route('cart') }}" title="Cart" class="nav-link text-white ">
+                                <span class="">{{ __('Cart') }}</span>
                                 <span class="fa fa-shopping-cart ">
-                                    <span class="badge">{{ $myCartCount }}</span>
+                                    <span class="badge badge-primary">{{ $myCartCount }}</span>
                                 </span>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <span class="ml-2 fa fa-user mr-2"></span>{{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

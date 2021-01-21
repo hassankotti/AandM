@@ -19,7 +19,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-warning text-white mb-4">
                     <div class="card-body">
-                        <span class="fa fa-list m-1 text-100"></span>{{ __('Categories') }}
+                        <span class="fa fa-tag m-1 text-100"></span>{{ __('Categories') }}
                         <span class="pull-right text-100">{{ Count($categories) }}</span>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -35,27 +35,31 @@
                         <span class="pull-right text-100">{{ Count($users) }}</span>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" href="{{ route('users') }}">View Details</a>
                         <div class="small text-white"><i class="fa fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Danger Card</div>
+                    <div class="card-body">
+                        <span class="fa fa-shopping-cart m-1 text-100"></span>{{ __('Orders') }}
+                        <span class="pull-right text-100">{{ Count($users) }}</span>
+                    </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" href="{{ route('order') }}">View Details</a>
                         <div class="small text-white"><i class="fa fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="row">
             <div class="col-xl-6">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fa fa-chart mr-1"></i>
-                        Area Chart Example
+                        <i class="fa fa-line-chart mr-1"></i>
+                        Order Report
                     </div>
                     <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                 </div>
@@ -63,8 +67,8 @@
             <div class="col-xl-6">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fa fa-chart mr-1"></i>
-                        Bar Chart Example
+                        <i class="fa fa-bar-chart-o mr-1"></i>
+                        Salles Report
                     </div>
                     <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                 </div>
@@ -76,35 +80,33 @@
                 {{ __('Products') }}
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($products as $product)
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Details</th>
+                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->category->name }}</td>
+                                <td>{{ $product->price }}</td>
+                                <td>{{ $product->details }}</td>
+
                             </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($products as $product)
-                                <tr>
-                                    <td>{{ $product->id }}</td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>{{ $product->price }}</td>
-                                    <td>{{ $product->details }}</td>
-    
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="5">{{ __('No Data To Show') }}</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
+                        @empty
+                            <tr>
+                                <td colspan="5">{{ __('No Data To Show') }}</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
             <div class="card-header">
                 <div class="pull-left">
                     <h3 class="page-title">
-                        <i class="fa fa-list"></i><span class="ml-2">Categories</span>
+                        <i class="fa fa-tag"></i><span class="ml-2">Categories</span>
                                         <div class="container">
             @if ($errors->any())
                 <div class="alert alert-danger">
