@@ -3,7 +3,6 @@
 
     <div class="row">
         <div class="col-12">
-
             <div id="carouselExampleIndicators" class="carousel slide my-h1" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -38,14 +37,13 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-
             <div class="container mt-5">
                 <div class="row">
                     @foreach ($products as $product)
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a href="#"><img class="card-img-top img-fluid" src="{{ url($product->img_path) }}"
-                                        alt="{{ asset($product->img_path) }}"></a>
+                                <a href="#"><img class="card-img-top img-fluid" src="{{ url($product->img_path??'no_image.jpg') }}"
+                                        alt="{{ asset($product->img_path??'no_image.jpg') }}"></a>
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a href="#">{{ $product->name }}</a>
@@ -55,37 +53,24 @@
                                 </div>
                                 <div class="card-footer">
                                     <a class="btn btn-success text-black" href="{{ route('cart') }}"
-                                        onclick="event.preventDefault(); document.getElementById('add-to-cart-{{$product->id}}').submit();">
+                                        onclick="event.preventDefault(); document.getElementById('add-to-cart-{{ $product->id }}').submit();">
                                         <span class="fa fa-plus ml-2"></span>
                                         <span class="mr-2">{{ __('Add To Cart') }}</span>
                                     </a>
                                     <a class="pull-right p-2" href="#"><span class="fa fa-heart-o"></span></a>
-                                    <form id="add-to-cart-{{$product->id}}" action="{{ route('cart.store') }}" method="POST" class="d-none">
+                                    <form id="add-to-cart-{{ $product->id }}" action="{{ route('cart.store') }}"
+                                        method="POST" class="d-none">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="hidden" name="price" value="{{ $product->price }}">
+
                                     </form>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
-            <!-- /.row -->
-
         </div>
-        <!-- /.col-lg-9 -->
-
     </div>
-    <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 @endsection

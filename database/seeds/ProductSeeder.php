@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;;
+
 
 class ProductSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Admin',
                 'category_id' => 1,
-                'img_path' => null,
+                'img_path' => 'assets\images\no_image.jpg',
                 'details' => null,
                 'price' => 300
             ]

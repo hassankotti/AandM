@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Cart;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -19,7 +20,11 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('/cart', 'CartController')->name('index', 'cart');
+Route::get('/cart', 'CartController@index')->name('cart');
+Route::post('/cart', 'CartController@store')->name('cart.store');
+
+Route::get('/cart/checkout', 'CartController@checkout')->name('checkout');
+
 Route::get('/profile', 'CartController@index')->name('profile');
 
 

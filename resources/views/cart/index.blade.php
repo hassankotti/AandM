@@ -68,21 +68,21 @@
                                     <div class="summary">
                                         <h3>Summary</h3>
                                         <div class="summary-item"><span class="text">Subtotal</span><span
-                                                class="price">$360</span></div>
-                                        <div class="summary-item"><span class="text">Discount</span><span
-                                                class="price">$0</span></div>
-                                        <div class="summary-item"><span class="text">Shipping</span><span
-                                                class="price">$0</span></div>
+                                                class="price"> {{'SGD' . $summary }}</span></div>
+                                        <div class="summary-item"><span class="text">Discount</span><span class="price">SDG
+                                                0</span></div>
+                                        <div class="summary-item"><span class="text">Shipping</span><span class="price">SDG
+                                                0</span></div>
                                         <div class="summary-item"><span class="text">Total</span><span
-                                                class="price">$360</span></div>
-                                        <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+                                                class="price"> {{'SGD' . $summary }}</span></div>
+                                        <a href="{{ route('checkout') }}"
+                                            class="btn btn-primary btn-lg btn-block">Checkout</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                </main>
             @endif
         </div>
     </div>

@@ -34,10 +34,10 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-hover table-bordered" id="sampleTable">
+                <!--table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th> Order Number </th>
+                            <th>#</th>
                             <th> Placed By </th>
                             <th class="text-center"> Total Amount </th>
                             <th class="text-center"> Items Qty </th>
@@ -47,7 +47,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($orders as $order)
+                        {{--@foreach($orders as $order)
                             <tr>
                                 <td>{{ $order->order_number }}</td>
                                 <td>{{ $order->user->fullName }}</td>
@@ -69,13 +69,31 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @endforeach--}}
                         </tbody>
-                    </table>
+                    </table-->
+                    <div class="col-6">
+                        <ul class="">
+                            <li class="row border p-2 tab-pane tab-content">
+                                    <div class="col-md-2">#12</div>
+                                    <div class="col-md-4">August 21, 2020 13:20:28</div> 
+                                    <div class="col-md-4">$ 19.50 </div>
+                                </a>
+                            </li>
+                            <li class="row">
+                                <div class="col-md-2">#11</div> 
+                                <div class="col-md-4">August 21, 2020 13:19:43</div> 
+                                <div class="col-md-4">$ 160.00</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        #
+                    </div>
             </div>
             <div class="card-footer">
                 <div class="d-flex justify-content-center">
-                    {{ $orders->links() }}
+                    {{-- $orders->links() --}}
                 </div>
             </div>
         </div>
