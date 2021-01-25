@@ -7,6 +7,7 @@ use App\Model\Product;
 use App\Model\Cart;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {

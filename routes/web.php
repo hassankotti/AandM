@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/cart', 'CartController@index')->name('cart');

@@ -37,50 +37,85 @@
             <div class="card-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-3">
-
-                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                aria-orientation="vertical">
-                                @forelse ($orders as $order)
-                                    <a class="nav-link " id="v-pills-{{ $order->id }}-tab" data-toggle="pill"
-                                        href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                                        <div class="row">
-                                            <div class="col">#{{ $order->id }}</div>
-                                            <div class="col">{{ $order->placed_by }}</div>
-                                            <div class="col">${{ $order->total_amount }}</div>
-                                        </div>
-                                    </a>
-                                @empty
-                                    <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
-                                        role="tab" aria-controls="v-pills-home" aria-selected="true">
-                                        <div class="row">
-                                            <div class="col"># No order yet!</div>
-                                        </div>
-                                    </a>
-                                @endforelse
-                            </div>
-                        </div>
-                        <div class="col-9">
-                            @forelse ($ordersdetails as $ordersdetail)
-                                <div class="tab-content" id="v-pills-tabContent">
-                                    <div class="tab-pane fade show " id="v-pills-home" role="tabpanel"
-                                        aria-labelledby="v-pills-{ $ordersdetail->order_id }}-tab">
-
-                                        <div class="row">{{ $ordersdetail->sub_total }}</div>
-                                        <hr>
-                                        <div class="row">Dapibus ac facilisis in</div>
-                                        <hr>
-                                        <div class="row">Morbi leo risus</div>
-                                        <hr>
-                                        <div class="row">Porta ac consectetur ac</div>
-                                        <hr>
-                                        <div class="row">Vestibulum at eros</div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        Order
                                     </div>
                                 </div>
-                            @empty
-                                <div class="row"># No order yet!</div>
-                                <hr>
-                            @endforelse
+                                <div class="card-body">
+                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                                        aria-orientation="vertical">
+                                        @forelse ($orders as $order)
+                                            <a class="nav-link " id="v-pills-{{ $order->id }}-tab" data-toggle="pill"
+                                                href="#v-pills-{{ $order->id }}" role="tab"
+                                                aria-controls="v-pills-{{ $order->id }}" aria-selected="true">
+                                                <div class="row">
+
+                                                    <div class="col-2"><small>#{{ $order->id }}</small></div>
+                                                    <div class="col-6">{{ $order->placed_by }}</div>
+                                                    <div class="col-4"><small>${{ $order->total_amount }}</small></div>
+                                                </div>
+                                            </a>
+                                        @empty
+                                            <a class="nav-link " id="v-pills-no-data-tab" data-toggle="pill"
+                                                href="#v-pills-no-data" role="tab" aria-controls="v-pills-no-data"
+                                                aria-selected="true">
+                                                <div class="row">
+                                                    <div class="col"># No order yet!</div>
+                                                </div>
+                                            </a>
+                                        @endforelse
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        Order Details
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    @forelse ($ordersdetails as $ordersdetail)
+                                        <div class="tab-content" id="v-pills-tabContent">
+                                            <div class="tab-pane fade show " id="v-pills-{{ $ordersdetail->order_id }}"
+                                                role="tabpanel" aria-labelledby="v-pills-{{ $ordersdetail->order_id }}-tab">
+                                                <table class="table table-light">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Product</th>
+                                                            <th>Qty</th>
+                                                            <th>Price</th>
+                                                            <th>Subtotal</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>{{ App\Model\Product::find($ordersdetail->product_id)->name }}
+                                                            </td>
+                                                            <td>{{ $ordersdetail->quantity . 'X' }}</td>
+                                                            <td>{{ App\Model\Product::find($ordersdetail->product_id)->price }}
+                                                            </td>
+                                                            <td>{{ '$' . $ordersdetail->sub_total }}</td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <div class="tab-content" id="v-pills-tabContent">
+                                            <div class="tab-pane fade show " id="v-pills-no-data-tab" role="tabpanel"
+                                                aria-labelledby="v-pills-no-data-tab-tab">
+                                                <div class="row">{{ $ordersdetail->sub_total }}</div>
+                                            </div>
+                                        </div>
+                                    @endforelse
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
