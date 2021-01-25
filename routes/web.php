@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('/cart', 'CartController@store')->name('cart.store');
@@ -34,5 +34,4 @@ Route::middleware(['auth' => 'check_admin'])->prefix('admin')->group(function ()
     Route::resource('/product', 'ProductController')->name('index', 'product');
     Route::resource('/orders', 'OrderController')->name('index', 'order');
     Route::resource('/users', 'UserController')->name('index', 'users');
-    Route::resource('/roles', 'RoleController')->name('index', 'roles');
 });

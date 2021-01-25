@@ -20,7 +20,6 @@
                     </li>
                     <li class="header-menu"><span>Authentication</span></li>
                     <li><a href="{{ route('users') }}"><i class="fa fa-user"></i><span>Users<span></a></li>
-                    <li><a href="{{ route('roles') }}"><i class="fa fa-list"></i><span>Roles</span></a></li>
                 </ul>
             </div>
         </div>
