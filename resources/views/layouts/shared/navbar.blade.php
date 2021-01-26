@@ -28,6 +28,9 @@
                             <span class="fa fa-user mr-2 text-100"></span>{{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                               <a class="dropdown-item" href="{{ url('/profile') }}">
+                                {{ __('Profile') }}
+                            </a>
                             <a class="dropdown-item" href="{{ url('/') }}">
                                 {{ __('Login As User') }}
                             </a>

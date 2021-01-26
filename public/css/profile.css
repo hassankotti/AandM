@@ -1,82 +1,119 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 19 oct. 2016, 12:19:05
-    Author     : guizani houssem
-*/
+/***
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+***/
 
-.profile-user-img{
-    margin:0 auto;
-    width:100px;
-    padding:3px;
-    border:3px solid #d2d6de;
+body {
+    background: #F1F3FA;
 }
 
-.profile-username{
-    font-size:21px;
-    margin-top:5px
+
+/* Profile container */
+
+.profile {
+    margin: 20px 0;
 }
 
-.list-group-unbordered>.list-group-item{
-    border-left:0;
-    border-right:0;
-    border-radius:0;
-    padding-left:0;
-    padding-right:0
+
+/* Profile sidebar */
+
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #fff;
 }
 
-.list-group {
-    padding-right: 0;
-    margin-bottom: 20px;
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
 }
 
-.timeline>li>.timeline-item{
-    -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.1);box-shadow:0 1px 1px rgba(0,0,0,0.1);border-radius:3px;margin-top:0;background:#fff;color:#444;margin-left:15px;margin-right:60px;padding:0;position:relative
+.profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.timeline>li>.timeline-item>.time{
-    color:#999;float:right;padding:10px;font-size:12px
+.profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
 }
 
-.timeline>li>.timeline-item>.timeline-header{
-    margin:0;color:#555;border-bottom:1px solid #f4f4f4;padding:10px;font-size:16px;line-height:1.1
+.profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
-.timeline>li>.timeline-item>.timeline-header>a{
-    font-weight:600}
-
-.timeline>li>.timeline-item>.timeline-body,.timeline>li>.timeline-item>.timeline-footer{
-    padding:10px
+.profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
 }
 
-.timeline>li>.fa,.timeline>li>.glyphicon,.timeline>li>.ion{
-    width:30px;height:30px;font-size:15px;line-height:30px;position:absolute;color:#666;background:#d2d6de;border-radius:50%;text-align:center;right:8px;top:0
+.profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
 }
 
-.timeline>.time-label>span{
-    font-weight:600;padding:5px;display:inline-block;background-color:#fff;border-radius:4px
+.profile-userbuttons .btn:last-child {
+    margin-right: 0px;
 }
 
-.timeline-inverse>li>.timeline-item{
-    background:#f0f0f0;border:1px solid #ddd;-webkit-box-shadow:none;box-shadow:none
+.profile-usermenu {
+    margin-top: 30px;
 }
 
-.timeline-inverse>li>.timeline-item>.timeline-header{
-    border-bottom-color:#ddd
+.profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7;
 }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: #ddd;
-    right: 31px;
-    margin: 0;
-    border-radius: 2px;
+.profile-usermenu ul li:last-child {
+    border-bottom: none;
 }
 
+.profile-usermenu ul li a {
+    color: #93a3b5;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+    background-color: #fafcfd;
+    color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+    color: #5b9bd1;
+    background-color: #f6f9fb;
+    border-left: 2px solid #5b9bd1;
+    margin-left: -2px;
+}
+
+
+/* Profile Content */
+
+.profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+}

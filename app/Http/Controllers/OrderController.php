@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Cart;
 use App\Model\Order;
 use App\Model\OrderDetails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -39,7 +41,20 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = $request->all();
+        $order_id = Order::create($order)->id;
+        $carts =Cart::where('user_id',Auth::user()->id)->get();
+
+        foreach ($carts as $key => $cart) {
+            $orderdetails = new OrderDetails();
+            $orderdetails->order_id= $order_id;
+            $orderdetails->sub_total=$cart->price;
+            $orderdetails->product_id=$cart->product_id;
+            $orderdetails->quantity=$cart->quantity;
+            $orderdetails->save();
+        }
+        Cart::where('user_id',Auth::user()->id)->delete();
+        return redirect()->route('home');
     }
 
     /**

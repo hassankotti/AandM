@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -21,7 +22,16 @@ class UserController extends Controller
         $users = User::paginate(5);
         return view('admin.users.index', compact('users'));
     }
-
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        $profile = Auth::user();
+        return view('admin.users.profile',compact('profile'));
+    }
     /**
      * Show the form for creating a new resource.
      *

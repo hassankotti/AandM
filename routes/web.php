@@ -25,8 +25,7 @@ Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('/cart', 'CartController@store')->name('cart.store');
 
 Route::get('/cart/checkout', 'CartController@checkout')->name('checkout');
-
-Route::get('/profile', 'CartController@index')->name('profile');
+Route::get('/profile', 'UserController@profile')->name('profile');
 
 
 Route::middleware(['auth' => 'check_admin'])->prefix('admin')->group(function () {
