@@ -14,52 +14,68 @@
                     </div>
                 </div>
             @else
-            <div class="col-md-12 col-lg-8">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title h2">
-                            <i class="fa fa-shopping-cart"></i><span class="ml-2">Shopping Cart</span>
+                <div class="col-md-12 col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title h2">
+                                <i class="fa fa-shopping-cart"></i><span class="ml-2">Shopping Cart</span>
+                            </div>
                         </div>
-                    </div>
                         <div class="card-body">
                             <div class="row">
-                                    <div class="conatiner">
-                                        @foreach ($cart as $item)
+                                <div class="conatiner">
+                                    @foreach ($cart as $item)
                                         <div class="card mb-3  border-0" style="max-width: 540px;">
                                             <div class="row no-gutters">
                                                 <div class="col-md-4">
-                                                    <img src="{{  asset($item->getProductDetails()->img_path)  }}" class="card-img" alt="...">
+                                                    <img src="{{ asset($item->getProductDetails()->img_path) }}"
+                                                        class="card-img" alt="...">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
                                                         <h5 class="card-text">{{ $item->getProductDetails()->name }}</h5>
-                                                        <p class="card-text"><span class="text-muted">{{   $item->getProductDetails()->price.' SDG' }}</span></p>
+                                                        <p class="card-text"><span
+                                                                class="text-muted">{{ number_format($item->getProductDetails()->price, 0, '.', ',') . ' SDG' }}</span>
+                                                        </p>
                                                         <div class="card-text">
-                                                            <input id="quantity" type="number" value="1"class="form-control quantity-input">
+                                                            <input id="quantity" type="number" value="1"
+                                                                class="form-control quantity-input">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-4">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-header">
-                                <h3 class="card-title">Summary</h3>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Subtotal {{ $cart[0]->summary() }}</li>
-                                <li class="list-group-item">Total {{ $cart[0]->summary() }}</li>
-                            </ul>
-                            <div class="card-footer">
-                                <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg btn-block">Checkout</a>
-                            </div>
-                        </div>
+                </div>
+
+                <div class="col-md-4 order-md-2 mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush mb-3">
+                            <h4 class="d-flex justify-content-between align-items-center p-4  card-header">
+                                <span class="text-muted">Your cart</span>
+                                <span class="badge badge-secondary badge-pill">{{ Count($cart) }}</span>
+                            </h4>
+
+                            <li class="list-group-item d-flex justify-content-between bg-light">
+                                <div class="text-success">
+                                    <h6 class="my-0">Subtotal</h6>
+                                    <small>Subtotal (SDG)</small>
+                                </div>
+                                <span class="text-success">{{ number_format($cart[0]->summary(), 0, '.', ',') }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total (SDG)</span>
+                                <strong>{{ number_format($cart[0]->summary(), 0, '.', ',') }}</strong>
+                            </li>
+                        </ul>
+
+                        <form class="card-footer p-2">
+                            <a href="{{ route('checkout') }}" class="btn btn-primary btn-lg btn-block">Checkout</a>
+                        </form>
                     </div>
                 </div>
             @endif

@@ -11,29 +11,29 @@
                 <div class="col-md-4 order-md-2 mb-4">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Your cart</span>
-                        <span class="badge badge-secondary badge-pill">3</span>
+                        <span class="badge badge-secondary badge-pill">{{ Count($cart) }}</span>
                     </h4>
                     <ul class="list-group mb-3">
                         @foreach ($cart as $item)
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0">{{ $item->getProductDetails()->name }}</h6>
-                                <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">{{ $item->quantity }}</span>
-                        </li>
+                                <div>
+                                    <h6 class="my-0">{{ $item->getProductDetails()->name }}</h6>
+                                    <small class="text-muted">Brief description</small>
+                                </div>
+                                <span class="text-muted">{{ $item->quantity }}</span>
+                            </li>
                         @endforeach
 
                         <li class="list-group-item d-flex justify-content-between bg-light">
                             <div class="text-success">
-                                <h6 class="my-0">Promo code</h6>
-                                <small>EXAMPLECODE</small>
+                                <h6 class="my-0">Subtotal</h6>
+                                <small>Subtotal (SDG)</small>
                             </div>
-                            <span class="text-success">-$5</span>
+                            <span class="text-success">{{ number_format($cart[0]->summary(), 0, '.', ',') }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (SDG)</span>
-                            <strong>{{ $cart[0]->summary() }}</strong>
+                            <strong>{{ number_format($cart[0]->summary(), 0, '.', ',') }}</strong>
                         </li>
                     </ul>
 
@@ -53,36 +53,27 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Name</label>
-                                <input type="text" class="form-control" name="placed_by" placeholder="" value="{{ Auth::user()->name }}" required="">
+                                <input type="text" class="form-control" name="placed_by" placeholder=""
+                                    value="{{ Auth::user()->name }}" required="">
                                 <div class="invalid-feedback">
                                     Valid name is required.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="username">Username</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">@</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="username" placeholder="Username"
-                                        required="">
-                                    <div class="invalid-feedback" style="width: 100%;">
-                                        Your username is required.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
                                 <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                                <input type="email" class="form-control" name="email" placeholder="you@example.com" value="{{ Auth::user()->email }}">
+                                <input type="email" class="form-control" name="email" placeholder="you@example.com"
+                                    value="{{ Auth::user()->email }}">
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-12 mb-3">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" name="address" placeholder="1234 Main St" required="">
+                                <input type="text" class="form-control" name="address" placeholder="1234 Main St"
+                                    required="">
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -93,16 +84,12 @@
 
                         <div class="row mb-3 ml-3">
                             <div class="custom-control custom-radio col">
-                                <input name="payment_status" value="1" type="radio" class="custom-control-input" checked="">
+                                <input name="payment_status" value="2" type="radio" class="custom-control-input" checked="">
                                 <label class="custom-control-label" for="credit">Credit card</label>
                             </div>
                             <div class="custom-control custom-radio col">
-                                <input  name="payment_status" value="1" type="radio" class="custom-control-input">
-                                <label class="custom-control-label" for="debit">Debit card</label>
-                            </div>
-                            <div class="custom-control custom-radio col">
-                                <input  name="payment_status" value="1" type="radio" class="custom-control-input">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
+                                <input name="payment_status" value="1" type="radio" class="custom-control-input">
+                                <label class="custom-control-label" for="paypal">Cash On Delivery</label>
                             </div>
                         </div>
                         <div class="row">
@@ -147,7 +134,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
 
         <script>

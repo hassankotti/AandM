@@ -80,14 +80,16 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item">
-                            <a href="{{ route('cart') }}" title="Cart" class="nav-link text-white ">
-                                <span class="">{{ __('Cart') }}</span>
-                                <span class="fa fa-shopping-cart ">
-                                    <span class="badge badge-primary">{{ $myCartCount }}</span>
-                                </span>
-                            </a>
-                        </li>
+                        @if (Route::has('cart.store'))
+                            <li class="nav-item">
+                                <a href="{{ route('cart') }}" title="Cart" class="nav-link text-white ">
+                                    <span class="">{{ __('Cart') }}</span>
+                                    <span class="fa fa-shopping-cart ">
+                                        <span class="badge badge-primary">{{ $myCartCount }}</span>
+                                    </span>
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

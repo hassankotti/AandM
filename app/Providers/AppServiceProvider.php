@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Model\Cart;
 use App\Model\Category;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,8 +32,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             'layouts.master',
             function ($view) {
-                $cart = Cart::where('user_id',Auth::user()->id)->get();
-                $view->with(['myCartCount'=> Count($cart), 'categoreis'=>Category::all()]);
+
+                $cart = Cart::where('user_id', Auth::user()->id)->get();
+                $view->with(['myCartCount' => Count($cart), 'categoreis' => Category::all()]);
             }
         );
     }
