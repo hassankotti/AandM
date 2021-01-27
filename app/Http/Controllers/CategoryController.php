@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(5);
-        return view('admin.category.index',compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -41,18 +41,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-       $category = new Category();
-       $path = "";
-
-        $path = ImageHelper::ImageUpload($request,'img_path','/images/categories/');
-
-        $category->img_path = $path;
+        $category = new Category();
         $category->name = $request->name;
         $category->desc = $request->desc;
         $category->save();
 
         return redirect()->route('category')
-            ->with('success','Category added successfully.');
+            ->with('success', 'Category added successfully.');
     }
 
     /**
@@ -63,8 +58,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find ($id);
-        return view('admin.category.show',compact('category'));
+        $category = Category::find($id);
+        return view('admin.category.show', compact('category'));
     }
 
     /**
@@ -75,9 +70,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category= Category::find($id);
-        //dd($category);
-        return view('admin.category.edit',compact('category'));
+        $category = Category::find($id);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -90,18 +84,14 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = new Category();
-        $path = "";
 
-        $path = ImageHelper::ImageUpload($request,'img_path','/images/categories/');
-
-        $category= Category::find($id);
+        $category = Category::find($id);
         $category->name         = $request->name;
         $category->desc      = $request->desc;
-        $category->img_path     = $path;
 
         $category->update();
         return redirect()->route('category')
-        ->with('success','category Updated successfully...');
+            ->with('success', 'category Updated successfully...');
     }
 
     /**
@@ -115,6 +105,6 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
         return redirect()->route('Category')
-        ->with('success','Category Deleted Successfully');
+            ->with('success', 'Category Deleted Successfully');
     }
 }

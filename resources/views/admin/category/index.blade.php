@@ -11,7 +11,7 @@
                     <div class="pull-right">
                         <form class="inline-form row">
                             <a class="btn btn-primary col-3 mr-2" href="{{ route('category.create') }}"> New</a>
-                            <input type="text"  class="form-control col-6" placeholder="search...">
+                            <input type="text" class="form-control col-6" placeholder="search...">
                             <button type="submit" class="btn btn-default col-2"><span class="fa fa-search"></span>
                         </form>
                     </div>
@@ -42,24 +42,22 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Image</th>
                         <th>Operations</th>
-                        </thead>
+                    </thead>
                     <tbody>
                         @forelse ($categories as $category)
                             <tr>
                                 <th> {{ $category->id }}</th>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->desc }}</td>
-                                <td>
-                                    <img src="{{ asset($category->img_path) }}" class="img-thumbnail img-responsive" alt="{{ asset($category->img_path) }}">
-                                </td>
                                 <td class="col-2">
-                                    <form action="{{ route('category.destroy',$category->id) }}" method="POST">
+                                    <form action="{{ route('category.destroy', $category->id) }}" method="POST">
 
-                                        <a class="btn btn-secondary btn-sm fa fa-eye" href="{{ route('category.show',$category->id) }}"></a>
+                                        <a class="btn btn-secondary btn-sm fa fa-eye"
+                                            href="{{ route('category.show', $category->id) }}"></a>
 
-                                        <a class="btn btn-primary btn-sm fa fa-edit" href="{{ route('category.edit',$category->id) }}"></a>
+                                        <a class="btn btn-primary btn-sm fa fa-edit"
+                                            href="{{ route('category.edit', $category->id) }}"></a>
 
                                         @csrf
                                         @method('DELETE')
@@ -82,5 +80,5 @@
                 </div>
             </div>
         </div>
-</div>
+    </div>
 @endsection

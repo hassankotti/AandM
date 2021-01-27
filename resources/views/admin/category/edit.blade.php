@@ -36,10 +36,6 @@
                     <div class="form-group">
                         <img src="{{ url($category->img_path) }}" class="rounded col-sm-1" alt="{{ $category->img_path }}">
                     </div>
-                    <div class="custom-file">
-                        <label class="custom-file-label" for="img_path">Image</label>
-                        <input type="file" class="custom-file-input" name="img_path" value="{{ $category->img_path }}">
-                    </div>
                     <div class="form-group">
                         <label for="desc">Description</label>
                         <textarea type="text" class="form-control" name="desc">{{ $category->desc }}</textarea>

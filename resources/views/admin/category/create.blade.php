@@ -32,15 +32,10 @@
                         <label for="name">Name</label>
                         <input type="text" class="form-control" name="name"  placeholder="Enter Category Name">
                     </div>
-                    <div class="custom-file">
-                        <label class="custom-file-label" for="img_path">Image</label>
-                        <input type="file" class="custom-file-input" name="img_path">
-                    </div>
                     <div class="form-group">
                         <label for="desc">Description</label>
                         <textarea type="text" class="form-control" name="desc" placeholder="Enter Category Description"></textarea>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

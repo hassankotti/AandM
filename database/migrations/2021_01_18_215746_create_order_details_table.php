@@ -19,7 +19,6 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('sub_total');
             $table->integer('product_id');
             $table->integer('quantity');
-            $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders');
         });
