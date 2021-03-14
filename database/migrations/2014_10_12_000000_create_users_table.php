@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->boolean('status')->default(1);
             $table->string('img_path')->nullable();
             $table->string('address')->nullable();
+            $table->timestamps();
         });
     }
 
