@@ -33,8 +33,9 @@ class AppServiceProvider extends ServiceProvider
             'layouts.master',
             function ($view) {
 
-                $cart = Cart::where('user_id', Auth::user()->id)->get();
-                $view->with(['myCartCount' => Count($cart), 'categoreis' => Category::all()]);
+                $cart = Auth::check()? Cart::where('user_id', Auth::user()->id)->get():0;
+                $cartCount = Auth::check() ? Count($cart) : 0;
+                $view->with(['myCartCount' => $cartCount, 'categoreis' => Category::all()]);
             }
         );
     }
