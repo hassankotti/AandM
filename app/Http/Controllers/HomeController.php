@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Category;
 use App\Model\Product;
-use App\Model\Cart;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,11 +23,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $categoreis = Category::all();
-        $products = Product::all();
-        dd($products);
+        $categorey = Category::where('name','=', $request->q)->get();
+        dd($categorey->id);
+        $products = Product::where('category_id','=', $categorey->id);
         return view('index', compact('categoreis', 'products'));
     }
 }

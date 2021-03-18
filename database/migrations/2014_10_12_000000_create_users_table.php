@@ -23,10 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('img_path')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
-<<<<<<< HEAD
 
-=======
->>>>>>> 39edd6c54febd6103dd1da7d7f0b6276f1be85be
         });
     }
 

@@ -36,7 +36,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
+                <ul class="mr-auto navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
@@ -50,7 +50,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @forelse($categoreis as $category)
-                                <a class="dropdown-item" href="#">{{ $category->name }}</a>
+                               <form method="get" action="{{ route('home') }}">
+                                    <input type="submit" class="dropdown-item" value="{{ $category->name }}" name="q">
+                               </form>
                             @empty
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">No Categories</a>
@@ -65,24 +67,24 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav">
-                    <form class="form-inline my-2 my-lg-0">
+                    <form class="my-2 form-inline my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><span class="fa fa-search"></span></button>
+                        <button class="my-2 btn btn-outline-primary my-sm-0" type="submit"><span class="fa fa-search"></span></button>
                     </form>
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item text-white">
+                        <li class="text-white nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
-                            <li class="nav-item text-white">
+                            <li class="text-white nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
                         @if (Route::has('cart.store'))
                             <li class="nav-item">
-                                <a href="{{ route('cart') }}" title="Cart" class="nav-link text-white ">
+                                <a href="{{ route('cart') }}" title="Cart" class="text-white nav-link ">
                                     <span class="">{{ __('Cart') }}</span>
                                     <span class="fa fa-shopping-cart ">
                                         <span class="badge badge-primary">{{ $myCartCount }}</span>
@@ -91,9 +93,9 @@
                             </li>
                         @endif
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
+                            <a id="navbarDropdown" class="text-white nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <span class="ml-2 fa fa-user mr-2"></span>{{ Auth::user()->name }}
+                                <span class="ml-2 mr-2 fa fa-user"></span>{{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
