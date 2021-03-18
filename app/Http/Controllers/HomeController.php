@@ -30,6 +30,7 @@ class HomeController extends Controller
     {
         $categoreis = Category::all();
         $products = Product::all();
+        dd($products);
         return view('index', compact('categoreis', 'products'));
     }
 }

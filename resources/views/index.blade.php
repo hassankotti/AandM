@@ -40,9 +40,10 @@
             <div class="container mt-5">
                 <div class="row">
                     @foreach ($products as $product)
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100">
-                                <a href="#"><img class="card-img-top img-fluid" src="{{ url($product->img_path??'no_image.jpg') }}"
+                        <div class="mb-4 col-lg-3 col-md-6">
+                            <div class="h-40 card" style="width: 13rem;">
+                                <a href="#">
+                                    <img class="card-img-top img-fluid h-25" src="{{ url($product->img_path??'no_image.jpg') }}"
                                         alt="{{ asset($product->img_path??'no_image.jpg') }}"></a>
                                 <div class="card-body">
                                     <h4 class="card-title">
@@ -52,12 +53,12 @@
                                     <p class="card-text">{{ $product->details }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a class="btn btn-success text-black" href="{{ route('cart') }}"
+                                    <a class="text-black btn btn-success" href="{{ route('cart') }}"
                                         onclick="event.preventDefault(); document.getElementById('add-to-cart-{{ $product->id }}').submit();">
-                                        <span class="fa fa-plus ml-2"></span>
-                                        <span class="mr-2">{{ __('Add To Cart') }}</span>
+                                        <span class="ml-2 fa fa-plus"></span>
+                                        <span class="mr-1"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                                     </a>
-                                    <a class="pull-right p-2" href="#"><span class="fa fa-heart-o"></span></a>
+                                    <a class="p-2 pull-right" href="#"><span class="fa fa-heart-o"></span></a>
                                     <form id="add-to-cart-{{ $product->id }}" action="{{ route('cart.store') }}"
                                         method="POST" class="d-none">
                                         @csrf

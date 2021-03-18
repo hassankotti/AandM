@@ -18,7 +18,11 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('desc')->nullable();
             $table->timestamps();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 39edd6c54febd6103dd1da7d7f0b6276f1be85be
         });
     }
 

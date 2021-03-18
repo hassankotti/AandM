@@ -50,18 +50,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       $product = new Product();
-       $path = "";
-
+        $product = new Product();
+        $path = "";
         $path = ImageHelper::ImageUpload($request,'img_path','/images/products/');
-
         $product->img_path = $path;
         $product->name = $request->name;
         $product->category_id = $request->category_id;
         $product->price = $request->price;
         $product->details = $request->details;
         $product->save();
-
         return redirect()->route('product')
         ->with('success','Product added successfully');
     }

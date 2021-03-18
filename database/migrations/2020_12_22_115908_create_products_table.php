@@ -22,7 +22,11 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 39edd6c54febd6103dd1da7d7f0b6276f1be85be
         });
     }
 
