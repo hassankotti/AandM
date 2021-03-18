@@ -20,6 +20,8 @@ class CreateOrdersTable extends Migration
             $table->string('payment_status');
             $table->string('status');
             $table->string('address')->nullable();
+            $table->timestamps();
+
         });
     }
 

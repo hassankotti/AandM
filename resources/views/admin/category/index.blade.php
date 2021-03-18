@@ -36,6 +36,7 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+
                 </div>
                 <table class="table table-hover table-bordered">
                     <thead>

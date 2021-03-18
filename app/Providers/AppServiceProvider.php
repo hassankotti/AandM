@@ -28,13 +28,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         Schema::defaultStringLength(191);
         view()->composer(
             'layouts.master',
             function ($view) {
-
-                $cart = Cart::where('user_id', Auth::user()->id)->get();
-                $view->with(['myCartCount' => Count($cart), 'categoreis' => Category::all()]);
+                if(Auth::check()){
+                    $cart = Count(Cart::where('user_id', Auth::user()->id)->get());
+                }
+                else
+                {
+                    $cart = 0;
+                }
+                $view->with(['myCartCount' => $cart, 'categoreis' => Category::all()]);
             }
         );
     }

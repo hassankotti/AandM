@@ -21,6 +21,8 @@ class CreateCartsTable extends Migration
             $table->integer('sub_total');
             $table->foreign('product_id')->references('id')->on('product');
             $table->foreign('user_id')->references('id')->on('user');
+            $table->timestamps();
+
         });
     }
 
