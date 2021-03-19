@@ -38,42 +38,44 @@
                     @endif
 
                 </div>
-                <table class="table table-hover table-bordered">
-                    <thead>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Operations</th>
-                    </thead>
-                    <tbody>
-                        @forelse ($categories as $category)
-                            <tr>
-                                <th> {{ $category->id }}</th>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->desc }}</td>
-                                <td class="col-2">
-                                    <form action="{{ route('category.destroy', $category->id) }}" method="POST">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Operations</th>
+                        </thead>
+                        <tbody>
+                            @forelse ($categories as $category)
+                                <tr>
+                                    <td> {{ $category->id }}</td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->desc }}</td>
+                                    <td>
+                                        <form action="{{ route('category.destroy', $category->id) }}" method="POST">
 
-                                        <a class="btn btn-secondary btn-sm fa fa-eye"
-                                            href="{{ route('category.show', $category->id) }}"></a>
+                                            <a class="btn btn-secondary btn-sm fa fa-eye"
+                                                href="{{ route('category.show', $category->id) }}"></a>
 
-                                        <a class="btn btn-primary btn-sm fa fa-edit"
-                                            href="{{ route('category.edit', $category->id) }}"></a>
+                                            <a class="btn btn-primary btn-sm fa fa-edit"
+                                                href="{{ route('category.edit', $category->id) }}"></a>
 
-                                        @csrf
-                                        @method('DELETE')
+                                            @csrf
+                                            @method('DELETE')
 
-                                        <button type="submit" class="btn btn-danger btn-sm fa fa-trash"></button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="5" class="text-center"> No Data to show!</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                                            <button type="submit" class="btn btn-danger btn-sm fa fa-trash"></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center"> No Data to show!</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="card-footer">
                 <div class="d-flex justify-content-center">

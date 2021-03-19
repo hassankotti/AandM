@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('/cart', 'CartController@store')->name('cart.store');
+Route::post('/cart-add','CartController@add')->name('cart.add');
 
 Route::get('/cart/checkout', 'CartController@checkout')->name('checkout');
 Route::get('/profile', 'UserController@profile')->name('profile');

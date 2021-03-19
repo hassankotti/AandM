@@ -26,9 +26,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $categoreis = Category::all();
-        $categorey = Category::where('name','=', $request->q)->get();
-        dd($categorey->id);
-        $products = Product::where('category_id','=', $categorey->id);
+
+        $products = $request->has('category_id') ? Product::where('category_id', $request->category_id)->get() : Product::all();
+        
         return view('index', compact('categoreis', 'products'));
     }
 }

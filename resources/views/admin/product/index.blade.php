@@ -11,7 +11,7 @@
                     <div class="pull-right">
                         <form class="inline-form row">
                             <a class="btn btn-primary col-3 mr-2" href="{{ route('product.create') }}"> New</a>
-                            <input type="text"  class="form-control col-6" placeholder="search...">
+                            <input type="text" class="form-control col-6" placeholder="search...">
                             <button type="submit" class="btn btn-default col-2"><span class="fa fa-search"></span>
                         </form>
                     </div>
@@ -55,8 +55,9 @@
                                 <th> {{ $product->id }}</th>
                                 <td>{{ $product->name }}</td>
                                 <td><small>{{ $product->details }}</small></td>
-                                <td>
-                                    <img src="{{ asset($product->img_path) }}" class="img-thumbnail img-responsive">
+                                <td class="p-0 align-content-center" cellspacing="0" cellpadding="0" width="50px">
+                                    <img src="{{ asset($product->img_path) }}" class="img-responsive m-0"
+                                        height="70" width="100%">
                                 </td>
                                 <td>{{ 'SDG ' . $product->price / 100 }}</td>
                                 <td>{{ $product->category['name'] }}</td>

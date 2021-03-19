@@ -38,8 +38,19 @@
                                                                 class="text-muted">{{ number_format($item->getProductDetails()->price, 0, '.', ',') . ' SDG' }}</span>
                                                         </p>
                                                         <div class="card-text">
-                                                            <input id="quantity" type="number" value="1"
-                                                                class="form-control quantity-input">
+
+                                                            <form id="quantity-change-form"
+                                                                action="{{ route('cart.add') }}" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" name="cart_id" value="{{ $item->id }}">
+                                                                <input type="hidden" name="product_id"
+                                                                    value="{{ $item->product_id }}">
+                                                                <input type="number" value="{{ $item->quantity }}"
+                                                                    class="form-control quantity-input"
+                                                                    onchange="event.preventDefault();
+                                                                                            document.getElementById('quantity-change-form').submit();"
+                                                                    name="quantity">
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>

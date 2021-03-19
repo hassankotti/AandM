@@ -50,9 +50,10 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @forelse($categoreis as $category)
-                               <form method="get" action="{{ route('home') }}">
-                                    <input type="submit" class="dropdown-item" value="{{ $category->name }}" name="q">
-                               </form>
+                                <form method="get" action="{{ route('home') }}">
+                                    <input type='hidden' value='{{ $category->id }}' name='category_id'>
+                                    <input type="submit" class="dropdown-item" value="{{ $category->name }}">
+                                </form>
                             @empty
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">No Categories</a>
@@ -69,7 +70,8 @@
                 <ul class="navbar-nav">
                     <form class="my-2 form-inline my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="my-2 btn btn-outline-primary my-sm-0" type="submit"><span class="fa fa-search"></span></button>
+                        <button class="my-2 btn btn-outline-primary my-sm-0" type="submit"><span
+                                class="fa fa-search"></span></button>
                     </form>
                     <!-- Authentication Links -->
                     @guest
@@ -101,7 +103,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                                                document.getElementById('logout-form').submit();">
+                                                                                    document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

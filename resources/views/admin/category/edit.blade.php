@@ -34,9 +34,6 @@
                         <input type="text" class="form-control" name="name" value="{{ $category->name }}">
                     </div>
                     <div class="form-group">
-                        <img src="{{ url($category->img_path) }}" class="rounded col-sm-1" alt="{{ $category->img_path }}">
-                    </div>
-                    <div class="form-group">
                         <label for="desc">Description</label>
                         <textarea type="text" class="form-control" name="desc">{{ $category->desc }}</textarea>
                     </div>
