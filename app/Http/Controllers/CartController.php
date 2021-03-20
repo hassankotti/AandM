@@ -15,7 +15,7 @@ class CartController extends Controller
 
     function index()
     {
-        $cart = Cart::where('user_id',Auth::user()->id)->get();
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
         return view('cart.index', compact('cart'));
     }
 
@@ -24,20 +24,17 @@ class CartController extends Controller
 
 
 
-        if (Cart::where('product_id', $request->product_id)->exists())
-        {
+        if (Cart::where('product_id', $request->product_id)->exists()) {
             $cartDetails = Cart::where('product_id', $request->product_id)->first();
-            $cartDetails->quantity =$cartDetails->quantity+1;
+            $cartDetails->quantity = $cartDetails->quantity + 1;
             $cartDetails->sub_total = $cartDetails->price * $cartDetails->quantity;
             $cartDetails->update();
-        }
-        else
-        {
+        } else {
             $cartDetails = new Cart();
             $cartDetails->user_id =  Auth::user()->id;
             $cartDetails->product_id = $request->product_id;
             $cartDetails->price = $request->price;
-            $cartDetails->quantity =1;
+            $cartDetails->quantity = 1;
             $cartDetails->sub_total = $cartDetails->price;
             $cartDetails->save();
         }
@@ -45,7 +42,8 @@ class CartController extends Controller
     }
 
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
         $cart = Cart::find($request->cart_id);
         $cart->quantity = $request->quantity;
         $cart->sub_total = $request->quantity * $cart->price;
@@ -56,7 +54,21 @@ class CartController extends Controller
 
     function checkout(Request $request)
     {
-        $cart = Cart::where('user_id',Auth::user()->id)->get();
-        return view('cart.checkout',compact('cart'));
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view('cart.checkout', compact('cart'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request)
+    {
+        $cart = Cart::find($request->cart_id);
+        $cart->delete();
+        return redirect()->route('cart')
+            ->with('success', 'Item Deleted Successfully');
     }
 }
