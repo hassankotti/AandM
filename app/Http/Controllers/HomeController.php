@@ -25,10 +25,13 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+
         $categoreis = Category::all();
 
-        $products = $request->has('category_id') ? Product::where('category_id', $request->category_id)->get() : Product::all();
-        
+        if ($request->has('Search'))
+            $products = Product::where('name', 'like', '%'.$request->Search.'%')->get();
+        else
+            $products = $request->has('category_id') ? Product::where('category_id', $request->category_id)->get() : Product::all();
         return view('index', compact('categoreis', 'products'));
     }
 }

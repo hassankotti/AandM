@@ -68,8 +68,8 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav">
-                    <form class="my-2 form-inline my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="my-2 form-inline my-lg-0" action="{{ route('home') }}">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="Search">
                         <button class="my-2 btn btn-outline-primary my-sm-0" type="submit"><span
                                 class="fa fa-search"></span></button>
                     </form>
