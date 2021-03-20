@@ -44,7 +44,7 @@
                 <div class="card bg-danger text-white mb-4">
                     <div class="card-body">
                         <span class="fa fa-shopping-cart m-1 text-100"></span>{{ __('Orders') }}
-                        <span class="pull-right text-100">{{ Count($users) }}</span>
+                        <span class="pull-right text-100">{{ Count($orders) }}</span>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="{{ route('order') }}">View Details</a>

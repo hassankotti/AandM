@@ -41,10 +41,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $order = $request->all();
         $order_id = Order::create($order)->id;
         $carts =Cart::where('user_id',Auth::user()->id)->get();
-
         foreach ($carts as $key => $cart) {
             $orderdetails = new OrderDetails();
             $orderdetails->order_id= $order_id;
@@ -53,7 +53,8 @@ class OrderController extends Controller
             $orderdetails->quantity=$cart->quantity;
             $orderdetails->save();
         }
-        Cart::where('user_id',Auth::user()->id)->delete();
+        $cart = Cart::where('user_id',Auth::user()->id)->delete();
+
         return redirect()->route('home');
     }
 

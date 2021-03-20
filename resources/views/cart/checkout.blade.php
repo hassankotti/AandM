@@ -48,13 +48,13 @@
                 </div>
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3">Billing address</h4>
-                    <form class="needs-validation" novalidate="" action="{{ route('orders.store') }}" method="POST">
+                    <form  action="{{ route('orders.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="firstName">Name</label>
                                 <input type="text" class="form-control" name="placed_by" placeholder=""
-                                    value="{{ Auth::user()->name }}" required="">
+                                    value="{{ Auth::user()->name }}" >
                                 <div class="invalid-feedback">
                                     Valid name is required.
                                 </div>
@@ -73,7 +73,7 @@
                             <div class="mb-3 col-md-12">
                                 <label for="address">Address</label>
                                 <input type="text" class="form-control" name="address" placeholder="1234 Main St"
-                                    required="">
+                                    >
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -95,7 +95,7 @@
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="cc-name">Name on card</label>
-                                <input type="text" class="form-control" name="cc-name" placeholder="" required="">
+                                <input type="text" class="form-control" name="cc-name" placeholder="" >
                                 <small class="text-muted">Full name as displayed on card</small>
                                 <div class="invalid-feedback">
                                     Name on card is required
@@ -103,7 +103,7 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="cc-number">Credit card number</label>
-                                <input type="text" class="form-control" name="cc-number" placeholder="" required="">
+                                <input type="text" class="form-control" name="cc-number" placeholder="" >
                                 <div class="invalid-feedback">
                                     Credit card number is required
                                 </div>
@@ -116,14 +116,14 @@
                         <div class="row">
                             <div class="mb-3 col-md-3">
                                 <label for="cc-expiration">Expiration</label>
-                                <input type="text" class="form-control" name="cc-expiration" placeholder="" required="">
+                                <input type="text" class="form-control" name="cc-expiration" placeholder="" >
                                 <div class="invalid-feedback">
                                     Expiration date required
                                 </div>
                             </div>
                             <div class="mb-3 col-md-3">
                                 <label for="cc-expiration">CVV</label>
-                                <input type="text" class="form-control" name="cc-cvv" placeholder="" required="">
+                                <input type="text" class="form-control" name="cc-cvv" placeholder="" >
                                 <div class="invalid-feedback">
                                     Security code required
                                 </div>
@@ -135,31 +135,5 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (function() {
-                'use strict';
-
-                window.addEventListener('load', function() {
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    var forms = document.getElementsByClassName('needs-validation');
-
-                    // Loop over them and prevent submission
-                    var validation = Array.prototype.filter.call(forms, function(form) {
-                        form.addEventListener('submit', function(event) {
-                            if (form.checkValidity() === false) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-                            form.classList.add('was-validated');
-                        }, false);
-                    });
-                }, false);
-            })();
-
-        </script>
-
-
     </div>
 @endsection

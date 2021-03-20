@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Model\Category;
+use App\Model\Order;
 use App\Model\Product;
 use Illuminate\Http\Request;
 use App\Model\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\HigherOrderTapProxy;
 
 class DashboardController extends Controller
 {
@@ -31,6 +33,7 @@ class DashboardController extends Controller
         $products = Product::all();
         $categories = Category::all();
         $users = User::all();
-        return view('admin.dashboard', compact('data', 'products', 'categories', 'users'));
+        $orders = Order::all();
+        return view('admin.dashboard', compact('data', 'products', 'categories', 'users','orders'));
     }
 }
