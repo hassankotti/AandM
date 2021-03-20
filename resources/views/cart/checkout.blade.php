@@ -48,13 +48,13 @@
                 </div>
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3">Billing address</h4>
-                    <form  action="{{ route('orders.store') }}" method="POST">
+                    <form action="{{ route('orders.placed') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="firstName">Name</label>
                                 <input type="text" class="form-control" name="placed_by" placeholder=""
-                                    value="{{ Auth::user()->name }}" >
+                                    value="{{ Auth::user()->name }}">
                                 <div class="invalid-feedback">
                                     Valid name is required.
                                 </div>
@@ -72,8 +72,7 @@
 
                             <div class="mb-3 col-md-12">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" name="address" placeholder="1234 Main St"
-                                    >
+                                <input type="text" class="form-control" name="address" placeholder="1234 Main St">
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -95,7 +94,7 @@
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="cc-name">Name on card</label>
-                                <input type="text" class="form-control" name="cc-name" placeholder="" >
+                                <input type="text" class="form-control" name="cc-name" placeholder="">
                                 <small class="text-muted">Full name as displayed on card</small>
                                 <div class="invalid-feedback">
                                     Name on card is required
@@ -103,7 +102,7 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="cc-number">Credit card number</label>
-                                <input type="text" class="form-control" name="cc-number" placeholder="" >
+                                <input type="text" class="form-control" name="cc-number" placeholder="">
                                 <div class="invalid-feedback">
                                     Credit card number is required
                                 </div>
@@ -116,14 +115,14 @@
                         <div class="row">
                             <div class="mb-3 col-md-3">
                                 <label for="cc-expiration">Expiration</label>
-                                <input type="text" class="form-control" name="cc-expiration" placeholder="" >
+                                <input type="text" class="form-control" name="cc-expiration" placeholder="">
                                 <div class="invalid-feedback">
                                     Expiration date required
                                 </div>
                             </div>
                             <div class="mb-3 col-md-3">
                                 <label for="cc-expiration">CVV</label>
-                                <input type="text" class="form-control" name="cc-cvv" placeholder="" >
+                                <input type="text" class="form-control" name="cc-cvv" placeholder="">
                                 <div class="invalid-feedback">
                                     Security code required
                                 </div>

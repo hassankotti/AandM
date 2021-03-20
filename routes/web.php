@@ -28,12 +28,12 @@ Route::delete('/cart-dalete', 'CartController@destroy')->name('cart.destroy');
 
 Route::get('/cart/checkout', 'CartController@checkout')->name('checkout');
 Route::get('/profile', 'UserController@profile')->name('profile');
-
+Route::post('/orders', 'OrderController@store')->name('orders.placed');
 
 Route::middleware(['auth' => 'check_admin'])->prefix('admin')->group(function () {
     Route::get('/',  'DashboardController@index')->name('dashboard');
     Route::resource('/category', 'CategoryController')->name('index', 'category');
     Route::resource('/product', 'ProductController')->name('index', 'product');
-    Route::resource('/orders', 'OrderController')->name('index', 'order');
+    Route::resource('/orders', 'OrderController')->except(['store'])->name('index', 'order');
     Route::resource('/users', 'UserController')->name('index', 'users');
 });

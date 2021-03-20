@@ -41,19 +41,19 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $order = $request->all();
         $order_id = Order::create($order)->id;
-        $carts =Cart::where('user_id',Auth::user()->id)->get();
+
+        $carts = Cart::where('user_id', Auth::user()->id)->get();
         foreach ($carts as $key => $cart) {
             $orderdetails = new OrderDetails();
-            $orderdetails->order_id= $order_id;
-            $orderdetails->sub_total=$cart->price;
-            $orderdetails->product_id=$cart->product_id;
-            $orderdetails->quantity=$cart->quantity;
+            $orderdetails->order_id = $order_id;
+            $orderdetails->sub_total = $cart->price;
+            $orderdetails->product_id = $cart->product_id;
+            $orderdetails->quantity = $cart->quantity;
             $orderdetails->save();
         }
-        $cart = Cart::where('user_id',Auth::user()->id)->delete();
+        $cart = Cart::where('user_id', Auth::user()->id)->delete();
 
         return redirect()->route('home');
     }
