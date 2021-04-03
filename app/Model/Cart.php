@@ -19,7 +19,7 @@ class Cart extends Model
     {
         $this->hasMany(App\Models\product::Class);
     }
-
+//-------------------------
     function getProductDetails()
     {
         return Product::find($this->product_id);
@@ -31,10 +31,5 @@ class Cart extends Model
         $summary = 0;
         $summary = Cart::where('user_id',$user_id)->sum('sub_total');
         return $summary;
-
-    }
-    function truncate()
-    {
-        //DB::delete('delete carts where user_id = ?', Auth::user()->id);
     }
 }
